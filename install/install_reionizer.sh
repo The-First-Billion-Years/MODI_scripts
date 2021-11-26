@@ -42,4 +42,4 @@ pip install git+git://github.com/charlottenosam/pyqt-fit.git
 echo pip install git+git://github.com/charlottenosam/pyqt-fit.git
 
 # test installation
-python -c "import reionizer"
+python -c "import reionizer; print('Imported reionizer succesfully'); print(reionizer.get_xHI_tab())"
