@@ -9,6 +9,7 @@ More detailed information about using ERDA can be found on [github](https://gith
 - Jobs are submitted on MODI using [slurm](https://slurm.schedmd.com/overview.html), here is a [cheatsheet](https://gist.github.com/ctokheim/bf68b2c4b78e9851b469be3425470699).
 - When running on MODI all your files need to be placed in `~/modi_mount` as this is the only folder the execution nodes can see. You need to place both the executable and any input/output files here. You can also only submit jobs from this folder, as the results cannot be written elsewhere.
 - Additionally, the modi mount directory is currently limited to a maximum of 50 GB per user
+- Scripts need to be executable
 
 ## Usage
 
@@ -24,7 +25,7 @@ find MODI_scripts -type f -name "*.sh" -print0 |xargs -0 chmod a+x
 ```
 If there are subsequent updates you can `git pull` in `MODI_scripts/` and run line 3 again
 
-## Running programs
+### Running programs
 
 There is a 3 step process to running a program
 
@@ -58,10 +59,11 @@ python ~/modi_mount/code/21cmfish/scripts/make_lightcones_for_fisher.py 21cmFAST
 3. Run the code on MODI
 
 - Jobs are submitted using [slurm](https://gist.github.com/ctokheim/bf68b2c4b78e9851b469be3425470699)
-- Simple cases you can run e.g. `sbatch slurm_job.sh` from the command line, but note this will stop if it runs longer than 15 mins
+- For simple cases using one core you can run e.g. `sbatch slurm_job.sh` from the command line, but note this will stop if it runs longer than 15 mins
 - For longer runs you can use one of the other partitions via e.g. `sbatch --partition=modi_long slurm_job.sh`.
+- You can use `slurm` to use multiple cores e.g. for MPI
 
-Timelimits are as follows:
+Timelimits on the partitions are as follows:
 Partition  | Timelimit
 -----------|----------
 modi_devel | 15 mins
