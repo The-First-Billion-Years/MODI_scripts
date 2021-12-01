@@ -19,7 +19,7 @@ Login to MODI with a HPC notebook environment using the instructions [here](http
 
 Download these files and make them executable
 ```
-cd ~/modo_mount/
+cd ~/modi_mount/
 git clone https://github.com/The-First-Billion-Years/MODI_scripts.git
 find MODI_scripts -type f -name "*.sh" -print0 |xargs -0 chmod a+x
 ```
