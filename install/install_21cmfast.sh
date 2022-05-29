@@ -20,8 +20,8 @@ echo conda init bash
 # conda remove -n 21cmfast --all -y
 conda activate 21cmfast
 if [ $? != 0 ]; then
-  conda create -n 21cmfast python=3.7
-  conda activate 21cmfast
+    conda create -n 21cmfast python=3.9
+    conda activate 21cmfast
 fi
 echo conda activate 21cmfast
 
@@ -30,6 +30,7 @@ conda install gsl fftw
 conda install numpy scipy click pyyaml cffi astropy h5py
 conda install pip
 pip install powerbox
+ls /opt/conda/envs/21cmfast/include/fftw3.h
 
 # Install 21cmfast
 cd ~/modi_mount/code/21cmFAST
@@ -39,8 +40,8 @@ INCLUDE=/opt/conda/envs/21cmfast/include LIB=/opt/conda/envs/21cmfast/lib  pip i
 # Install 21cmfish
 # conda remove py21cmfish
 pip uninstall -y py21cmfish
-pip install git+git://github.com/charlottenosam/21cmfish.git
-echo pip install git+git://github.com/charlottenosam/21cmfish.git
+pip install git+https://github.com/charlottenosam/21cmfish.git
+echo pip install git+https://github.com/charlottenosam/21cmfish.git
 
 # test install
 21cmfast --help
